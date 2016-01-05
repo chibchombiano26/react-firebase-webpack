@@ -2,3 +2,13 @@
 se debe instalar
 npm install --save-dev babel-preset-react
 npm install --save-dev babel-preset-es2015
+
+
+cloud 9
+
+echo "export NODE_PATH=$NODE_PATH:/home/ubuntu/.nvm/v0.10.35/lib/node_modules" >> ~/.bashrc && source ~/.bashrc  
+kill -9 $(lsof -i:8080 -t)
+
+
+reloading url
+https://react-firebase-chibchombiano26.c9users.io/webpack-dev-server/index.html

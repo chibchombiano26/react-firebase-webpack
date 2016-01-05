@@ -23,7 +23,7 @@ class App extends React.Component{
         });
         
         return(
-            <div>{messageNodes}</div>
+            <div style={{color: 'red'}}>{messageNodes}</div>
         );
     }
 }

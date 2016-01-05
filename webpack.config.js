@@ -1,25 +1,36 @@
+var path = require('path');
+var webpack = require('webpack');
+
 module.exports = {
-    entry :{
-        main: [
-            /*'./script1.js',
-            './script2.js'*/
-            './src/main.js'
-        ]
-    },
-    output:{
-        filename: './public/[name].js'
-    },
-    module:{
-        loaders:[
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loader: 'babel',
-                query:
-                {
-                    presets:['es2015', 'react']
-                }
-            }
-        ]
-    }
+  devtool: 'source-map',
+  entry: {
+    main: [
+      'webpack-dev-server/client?https://react-firebase-chibchombiano26.c9users.io',
+      'webpack/hot/only-dev-server',
+      './src/main.js'
+    ]
+  },
+  output: {
+    filename: '[name].js',
+    path: path.join(__dirname, 'public'),
+    publicPath: '/public/'
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        include: path.join(__dirname, 'src'),
+        loader: 'react-hot!babel'
+      },
+      {
+        test: /\.scss$/,
+        include: path.join(__dirname, 'src'),
+        loader: 'style!css!sass'
+      }
+    ]
+  }
 }
