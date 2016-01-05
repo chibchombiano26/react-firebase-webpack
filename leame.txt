@@ -12,3 +12,6 @@ kill -9 $(lsof -i:8080 -t)
 
 reloading url
 https://react-firebase-chibchombiano26.c9users.io/webpack-dev-server/index.html
+
+store credential
+git config --global credential.helper store
