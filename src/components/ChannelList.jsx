@@ -1,6 +1,8 @@
 import React from 'react';
 import Channel from './Channel.jsx';
 import mui from 'material-ui';
+import Firebase from 'firebase';
+import _ from 'lodash';
 
 var {Card, List} = mui;
 
