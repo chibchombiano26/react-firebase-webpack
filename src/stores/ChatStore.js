@@ -62,29 +62,29 @@ class ChatStore{
     }
     
     
-    @bind(Actions.channelsReceived)
-    receivedChanels(channels){
-      
-      let selectedChannel;
-      _(channels)
+    
+  @bind(Actions.channelsReceived)
+  receivedChannels(channels){
+    let selectedChannel;
+    _(channels)
       .keys()
-      .each((key, index)=>{
+      .each((key, index) => {
         channels[key].key = key;
-        if(index == 0){
-          channels[key].selected = true;
+        if(channels[key].selected){
           selectedChannel = channels[key];
         }
       })
       .value();
-      
-      
-      this.setState({
-        channels,
-        selectedChannel
-      })
-      
-      setTimeout(this.getInstance().getMessages, 100);
-    }
+
+    this.setState({
+      channels,
+      selectedChannel,
+      messagesDirty: true
+    });
+
+    setTimeout(this.getInstance().getMessages, 100);
+  }
+    
     
      @bind(Actions.channelOpened)
       channelOpened(selectedChannel){

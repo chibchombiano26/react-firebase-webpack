@@ -6,13 +6,18 @@ let firebaseRef = new Firebase('https://hefesoft-react-stack.firebaseio.com/chan
 
 let ChannelSource = {
     getChannels:{
-        remote(state){
+        remote(state, selectedChannelKey){
             
             return new Promise((resolve, reject)=>{
                 firebaseRef.once('value', (dataSnapshot)=>{
                    
-                   var channels = dataSnapshot.val();
-                   resolve(channels);
+                  var channels = dataSnapshot.val();
+                  selectedChannelKey = selectedChannelKey || _.keys(channels)[0];
+                  var selectedChannel = channels[selectedChannelKey];
+                  if(selectedChannel){
+                    selectedChannel.selected = true;
+                  }
+                  resolve(channels);
                     
                 });
             });

@@ -1,21 +1,11 @@
 import React from 'react';
 import mui from 'material-ui';
-import MessageList  from './MessageList.jsx';
-import ChannelList  from './ChannelList.jsx';
-import MessageBox from './MessageBox.jsx';
-import Login from './Login.jsx';
-import connectToStores from 'alt/utils/connectToStores';
-import ChatStore from '../stores/ChatStore';
+import {RouteHandler} from 'react-router';
 
 var ThemeManager = new mui.Styles.ThemeManager();
 var Colors = mui.Styles.Colors;
 var AppBar = mui.AppBar;
 
-
-var utilStore = connectToStores;
-var store = ChatStore;
-
-@connectToStores
 class App extends React.Component {
   constructor(){
     super();
@@ -29,14 +19,6 @@ class App extends React.Component {
   }
 
 
-  static getStores () {
-    return [ ChatStore ];
-  }
-
-  static getPropsFromStores () {
-    return ChatStore.getState();
-  }
-
   static childContextTypes = {
     muiTheme: React.PropTypes.object
   }
@@ -49,31 +31,10 @@ class App extends React.Component {
 
   render(){
 
-  var view = <Login />;
-  
-  if(this.props.user){
-    view = (
-      <div> 
-          <div style={{
-              display: 'flex',
-              flexFlow: 'row wrap',
-              maxWidth : 1200,
-              width: '100%',
-              margin: '30 px auto 30px'
-          }}>
-             <ChannelList />
-             <MessageList />
-          </div>
-          <MessageBox />
-      
-      </div>
-    );
-  }
-
     return (
       <div>
-          <AppBar title="Awesome Chat App" />
-           {{view}}
+        <AppBar title="Awesome Chat App" />
+        <RouteHandler />
       </div>
     );
   }
